@@ -13,12 +13,12 @@ export class AsyncStore<Data> {
     error: null,
   };
 
-  private _state = new BehaviorSubject<AsyncState<Data>>(this.state);
+  private state$ = new BehaviorSubject<AsyncState<Data>>(this.state);
 
   constructor(state?: AsyncState<Data>) {
     if (state !== undefined) {
       this.state = state;
-      this._state.next({ ...this.state });
+      this.state$.next({ ...this.state });
     }
   }
 
@@ -31,32 +31,28 @@ export class AsyncStore<Data> {
   }
 
   public getObservable() {
-    return this._state.asObservable();
+    return this.state$.asObservable();
   }
 
   public emitRequest(data?: Data | null) {
-    this.state.error = null;
-    this.state.loading = true;
-
-    if (data !== undefined) {
-      this.state.data = data;
+    if (data === undefined) {
+      this.state = { ...this.state, loading: true, error: null };
+    } else {
+      this.state = { ...this.state, loading: true, data: data, error: null };
     }
 
-    this._state.next({ ...this.state });
+    this.state$.next({ ...this.state });
   }
 
   public emitSuccess(data: Data) {
-    this.state.loading = false;
-    this.state.data = data;
-    this.state.error = null;
+    this.state = { ...this.state, loading: false, data: data, error: null };
 
-    this._state.next({ ...this.state });
+    this.state$.next({ ...this.state });
   }
 
   public emitFailure(error: Error) {
-    this.state.loading = false;
-    this.state.error = error;
+    this.state = { ...this.state, loading: false, error: error };
 
-    this._state.next({ ...this.state });
+    this.state$.next({ ...this.state });
   }
 }

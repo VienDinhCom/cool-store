@@ -2,12 +2,12 @@ import { BehaviorSubject } from 'rxjs';
 
 export class Store<State> {
   private state: State | null = null;
-  private _state = new BehaviorSubject<State | null>(this.state);
+  private state$ = new BehaviorSubject<State | null>(this.state);
 
   constructor(state: State) {
     if (state !== undefined) {
       this.state = state;
-      this._state.next({ ...this.state });
+      this.state$.next({ ...this.state });
     }
   }
 
@@ -16,11 +16,11 @@ export class Store<State> {
   }
 
   public getObservable() {
-    return this._state.asObservable();
+    return this.state$.asObservable();
   }
 
   public emit(state: State) {
     this.state = state;
-    this._state.next({ ...this.state });
+    this.state$.next({ ...this.state });
   }
 }
