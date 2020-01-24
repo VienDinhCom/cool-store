@@ -48,6 +48,7 @@ export class AsyncStore<Data> {
   public emitSuccess(data: Data) {
     this.state.loading = false;
     this.state.data = data;
+    this.state.error = null;
 
     this._state.next({ ...this.state });
   }
