@@ -31,6 +31,7 @@ export class AsyncStore<Data> {
   }
 
   public getObservable() {
+    // https://www.learnrxjs.io/learn-rxjs/operators/filtering/distinctuntilchanged
     return this.state$.asObservable();
   }
 
