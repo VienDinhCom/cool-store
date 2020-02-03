@@ -13,7 +13,7 @@ export class CoolStore<State> {
   }
 
   private clone(state: State) {
-    return <State>produce(state, (state: Draft<State>) => {});
+    return <State>produce(state, (state: Draft<State>) => state);
   }
 
   private emit() {

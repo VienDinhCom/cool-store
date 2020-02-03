@@ -12,7 +12,6 @@ export class AsyncCoolStore<Data, Error> extends CoolStore<State<Data, Error>> {
     this.set(state => {
       state.loading = true;
       state.error = null;
-
       return state;
     });
   }
@@ -30,7 +29,6 @@ export class AsyncCoolStore<Data, Error> extends CoolStore<State<Data, Error>> {
     this.set(state => {
       state.loading = false;
       state.error = error;
-
       return state;
     });
   }
