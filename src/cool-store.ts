@@ -1,15 +1,15 @@
-import { Subject } from 'rxjs';
-import produce, { Draft } from 'immer';
+import { BehaviorSubject } from "rxjs";
+import produce, { Draft } from "immer";
 
 export class CoolStore<CoolState> {
   private initialState: CoolState;
   private _state: CoolState;
-  private state$ = new Subject<CoolState>();
+  private state$: BehaviorSubject<CoolState>;
 
   constructor(initialState: CoolState) {
     this._state = this.clone(initialState);
     this.initialState = this.clone(initialState);
-    this.emit();
+    this.state$ = new BehaviorSubject(this.clone(initialState));
   }
 
   private clone(state: CoolState) {
