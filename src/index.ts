@@ -1,2 +1,2 @@
-export * from './store';
-export * from './async-store';
+export * from './cool-store';
+export * from './async-cool-store';
