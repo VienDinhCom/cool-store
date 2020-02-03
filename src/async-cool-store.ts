@@ -1,5 +1,5 @@
-import produce, { Draft } from 'immer';
-import { CoolStore } from './cool-store';
+import produce, { Draft } from "immer";
+import { CoolStore } from "./cool-store";
 
 interface AsyncCoolState<Data, Error> {
   loading: boolean;

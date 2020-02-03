@@ -1,43 +1,26 @@
 {
-  "version": "1.0.0",
-  "license": "MIT",
+  "name": "cool-store",
+  "version": "1.1.3",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "author": "Vien Dinh",
+  "license": "MIT",
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
-    "test": "tsdx test",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build"
+    "build": "rimraf dist && tsc",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "immer": "^1.9.3"
   },
   "peerDependencies": {
     "rxjs": "^6.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint"
-    }
-  },
-  "prettier": {
-    "printWidth": 80,
-    "semi": true,
-    "singleQuote": true,
-    "trailingComma": "es5"
-  },
-  "name": "cool-store",
-  "author": "Vien Dinh",
-  "module": "dist/cool-store.esm.js",
   "devDependencies": {
-    "@types/jest": "^25.1.1",
-    "husky": "^4.2.1",
-    "tsdx": "^0.12.3",
-    "tslib": "^1.10.0",
-    "typescript": "^3.7.5"
-  },
-  "dependencies": {
-    "immer": "^1.9.3"
+    "install-peers": "^1.0.3",
+    "rimraf": "^3.0.1",
+    "typescript": "~3.5.3"
   }
 }
