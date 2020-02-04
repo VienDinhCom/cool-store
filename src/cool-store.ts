@@ -22,8 +22,7 @@ export class CoolStore<State> {
   }
 
   set(callback: (state: State) => State) {
-    const nextState = callback(clone(this.state));
-    this.state = clone(nextState);
+    this.state = clone(callback(clone(this.state)));
     this.emit();
   }
 
