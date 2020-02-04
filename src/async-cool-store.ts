@@ -1,13 +1,15 @@
 import produce, { Draft, Produced } from "immer";
 import { CoolStore } from "./cool-store";
 
-interface State<Data, Error> {
+interface AsyncState<Data, Error> {
   loading: boolean;
   data: Data | null;
   error: Error | null;
 }
 
-export class AsyncCoolStore<Data, Error> extends CoolStore<State<Data, Error>> {
+export class AsyncCoolStore<Data, Error> extends CoolStore<
+  AsyncState<Data, Error>
+> {
   setLoading() {
     this.set(state => {
       state.loading = true;
