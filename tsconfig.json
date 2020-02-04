@@ -13,6 +13,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "importHelpers": true,
+    "allowSyntheticDefaultImports": true,
     "typeRoots": ["node_modules/@types"]
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "cool-store",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -13,12 +13,13 @@
     "prepublish": "npm run build"
   },
   "dependencies": {
-    "immer": "^1.9.3"
+    "lodash.clonedeep": "^4.5.0"
   },
   "peerDependencies": {
     "rxjs": "^6.0"
   },
   "devDependencies": {
+    "@types/lodash.clonedeep": "^4.5.6",
     "install-peers": "^1.0.3",
     "rimraf": "^3.0.1",
     "typescript": "~3.5.3"
