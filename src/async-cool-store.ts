@@ -1,4 +1,4 @@
-import produce, { Draft, Produced } from "immer";
+import { Draft } from "immer";
 import { CoolStore } from "./cool-store";
 
 interface AsyncState<Data, Error> {
