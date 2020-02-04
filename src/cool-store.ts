@@ -3,11 +3,11 @@ import produce, { Draft } from "immer";
 
 export class CoolStore<State> {
   private initialState: State;
-  private _state: State;
+  private state: State;
   private state$: BehaviorSubject<State>;
 
   constructor(initialState: State) {
-    this._state = this.clone(initialState);
+    this.state = this.clone(initialState);
     this.initialState = this.clone(initialState);
     this.state$ = new BehaviorSubject(this.clone(initialState));
   }
@@ -17,24 +17,24 @@ export class CoolStore<State> {
   }
 
   private emit() {
-    this.state$.next(this.state);
+    this.state$.next(this.clone(this.state));
   }
 
   set(callback: (state: Draft<State>) => Draft<State>) {
-    this._state = <State>produce(this._state, callback);
+    this.state = <State>produce(this.state, callback);
     this.emit();
   }
 
   reset() {
-    this._state = this.clone(this.initialState);
+    this.state = this.clone(this.initialState);
     this.emit();
   }
 
-  get state() {
-    return this.clone(this._state);
+  get() {
+    return this.clone(this.state);
   }
 
-  get stateChanges() {
+  getChanges() {
     return this.state$.asObservable();
   }
 }
