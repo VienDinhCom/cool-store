@@ -8,9 +8,12 @@ import { Todo } from '../interfaces/todo';
   providedIn: 'root',
 })
 export class TodosService {
-  todosStore = new CoolStore<Todo[]>([]);
+  todosStore: CoolStore<Todo[]>;
 
-  constructor() {}
+  constructor() {
+    const initialState: Todo[] = [];
+    this.todosStore = new CoolStore(initialState);
+  }
 
   get todos() {
     return this.todosStore.get();
