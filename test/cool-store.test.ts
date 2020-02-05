@@ -30,6 +30,43 @@ describe('CoolStore', () => {
     });
   });
 
+  it('Get State', () => {
+    const state = store.get();
+
+    // Joker
+    state.product['name'] = 'Galaxy';
+
+    expect(store.get()).toEqual({
+      product: {
+        name: '',
+      },
+    });
+  });
+
+  it('Get State Changes', done => {
+    store
+      .getChanges()
+      .pipe(take(2))
+      .subscribe({
+        next: state => {
+          const cloneState = clone(state);
+
+          // Joker
+          state.product['name'] = 'Galaxy';
+
+          expect(cloneState).toEqual(store.get());
+
+          // Set State
+          store.set(state => {
+            state.product.name = 'iPhone';
+          });
+
+          expect(cloneState).toEqual(store.get());
+        },
+        complete: () => done(),
+      });
+  });
+
   it('Set Entire State', () => {
     const product = {
       name: 'Galaxy',
@@ -64,43 +101,6 @@ describe('CoolStore', () => {
         name: 'iPhone',
       },
     });
-  });
-
-  it('Get State', () => {
-    const state = store.get();
-
-    // Joker
-    state.product['name'] = 'Galaxy';
-
-    expect(store.get()).toEqual({
-      product: {
-        name: 'iPhone',
-      },
-    });
-  });
-
-  it('Get State Changes', done => {
-    store
-      .getChanges()
-      .pipe(take(2))
-      .subscribe({
-        next: state => {
-          const cloneState = clone(state);
-
-          // Joker
-          state.product['name'] = 'Galaxy';
-
-          expect(cloneState).toEqual(store.get());
-
-          // Set State
-          store.set(state => {
-            state.product.name = 'Galaxy';
-          });
-
-          expect(cloneState).toEqual(store.get());
-        },
-        complete: () => done(),
-      });
   });
 
   it('Reset State', () => {
