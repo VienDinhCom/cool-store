@@ -1,7 +1,13 @@
 {
   "name": "cool-store",
+  "description": "CoolStore is a state store built on top of RxJS",
+  "keywords": [
+    "rxjs",
+    "cool-store",
+    "state-management"
+  ],
   "author": "Vien Dinh",
-  "version": "1.3.3",
+  "version": "1.4.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -42,5 +48,13 @@
     "semi": true,
     "singleQuote": true,
     "trailingComma": "es5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maxvien/cool-store.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Maxvien/cool-store/issues"
+  },
+  "homepage": "https://github.com/Maxvien/cool-store#readme"
 }
