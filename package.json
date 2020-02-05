@@ -20,8 +20,7 @@
     "build": "tsdx build",
     "test": "tsdx test",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
-    "publish": "npm publish --tag next"
+    "prepare": "tsdx build"
   },
   "dependencies": {
     "lodash.clonedeep": "^4.5.0"
