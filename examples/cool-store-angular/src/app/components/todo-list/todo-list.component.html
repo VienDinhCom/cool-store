@@ -1,0 +1,9 @@
+<ul class="list-group">
+  <li
+    *ngFor="let todo of todos$ | async"
+    (click)="removeTodo(todo.id)"
+    class="list-group-item"
+  >
+    {{ todo.name }}
+  </li>
+</ul>
