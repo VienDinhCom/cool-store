@@ -1,4 +1,4 @@
-import { CoolStore } from "./cool-store";
+import { CoolStore } from './cool-store';
 
 interface AsyncState<Data, Error> {
   loading: boolean;
@@ -13,16 +13,17 @@ export class AsyncCoolStore<Data, Error> extends CoolStore<
     this.set(state => {
       state.loading = true;
       state.error = null;
-      return state;
     });
   }
 
-  setData(callback: (data: Data) => Data) {
+  setData(callback: (data: Data | null) => Data | null | void) {
     this.set(state => {
+      const returnData = <Data | null>callback(state.data);
+
+      if (returnData) state.data = returnData;
+
       state.loading = false;
       state.error = null;
-      state.data = callback(state.data);
-      return state;
     });
   }
 
@@ -30,7 +31,6 @@ export class AsyncCoolStore<Data, Error> extends CoolStore<
     this.set(state => {
       state.loading = false;
       state.error = error;
-      return state;
     });
   }
 }

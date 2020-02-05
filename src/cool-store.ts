@@ -1,5 +1,5 @@
-import clone from "lodash.clonedeep";
-import { BehaviorSubject } from "rxjs";
+import clone from 'lodash.clonedeep';
+import { BehaviorSubject } from 'rxjs';
 
 export class CoolStore<State> {
   private initialState: State;
@@ -21,8 +21,12 @@ export class CoolStore<State> {
     this.emit();
   }
 
-  set(callback: (state: State) => State) {
-    this.state = clone(callback(clone(this.state)));
+  set(callback: (state: State) => State | void) {
+    const inputState = clone(this.state);
+    const returnState = <State>callback(inputState);
+
+    this.state = returnState ? clone(returnState) : clone(inputState);
+
     this.emit();
   }
 
