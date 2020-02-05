@@ -1,15 +1,15 @@
-import React, { useState, FormEvent } from "react";
+import React, { useState, FormEvent } from 'react';
 
-import { Todo } from "../interfaces/todo";
-import { addTodo } from "../services/todosService";
+import { Todo } from '../interfaces/todo';
+import { addTodo } from '../services/todosService';
 
 export function TodoForm() {
-  const [todo, setTodo] = useState<Todo>({ name: "" });
+  const [todo, setTodo] = useState<Todo>({ name: '' });
 
   function onSubmit(event: FormEvent) {
     event.preventDefault();
     addTodo(todo);
-    setTodo({ name: "" });
+    setTodo({ name: '' });
   }
 
   return (
@@ -19,7 +19,7 @@ export function TodoForm() {
         value={todo.name}
         onChange={event => setTodo({ ...todo, name: event.target.value })}
         className="form-control"
-        placeholder="Please enter a Todo"
+        placeholder="Please enter a Todo name!"
       />
     </form>
   );
