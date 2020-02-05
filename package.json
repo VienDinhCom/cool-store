@@ -1,27 +1,60 @@
 {
   "name": "cool-store",
-  "version": "1.3.2",
+  "description": "CoolStore is a state store built on top of RxJS",
+  "keywords": [
+    "rxjs",
+    "cool-store",
+    "state-management"
+  ],
+  "author": "Vien Dinh",
+  "version": "1.4.0",
+  "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "module": "dist/cool-store.esm.js",
   "files": [
     "dist"
   ],
-  "author": "Vien Dinh",
-  "license": "MIT",
   "scripts": {
-    "build": "rimraf dist && tsc",
-    "prepublish": "npm run build"
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "publish": "npm publish --tag next"
   },
   "dependencies": {
     "lodash.clonedeep": "^4.5.0"
   },
   "peerDependencies": {
-    "rxjs": "^6.0"
+    "rxjs": "^6.5.4"
   },
   "devDependencies": {
-    "@types/lodash.clonedeep": "^4.5.6",
-    "install-peers": "^1.0.3",
-    "rimraf": "^3.0.1",
-    "typescript": "~3.5.3"
-  }
+    "@types/jest": "^25.1.1",
+    "@types/lodash.clonedeep": "^4.5.0",
+    "husky": "^4.2.1",
+    "rxjs": "^6.5.4",
+    "tsdx": "^0.12.3",
+    "tslib": "^1.10.0",
+    "typescript": "^3.7.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maxvien/cool-store.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Maxvien/cool-store/issues"
+  },
+  "homepage": "https://github.com/Maxvien/cool-store#readme"
 }
