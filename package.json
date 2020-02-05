@@ -7,13 +7,15 @@
     "state-management"
   ],
   "author": "Vien Dinh",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "module": "dist/cool-store.esm.js",
   "files": [
-    "dist"
+    "dist",
+    "src",
+    "test"
   ],
   "scripts": {
     "start": "tsdx watch",
