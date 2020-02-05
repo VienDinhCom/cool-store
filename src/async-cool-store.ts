@@ -1,13 +1,13 @@
 import { CoolStore } from './cool-store';
 
-interface AsyncState<Data, Error> {
+export interface AsyncCoolState<Data, Error> {
   loading: boolean;
   data: Data | null;
   error: Error | null;
 }
 
 export class AsyncCoolStore<Data, Error> extends CoolStore<
-  AsyncState<Data, Error>
+  AsyncCoolState<Data, Error>
 > {
   setLoading() {
     this.set(state => {
