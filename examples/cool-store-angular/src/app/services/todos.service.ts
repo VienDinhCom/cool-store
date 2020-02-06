@@ -32,8 +32,7 @@ export class TodosService {
 
   removeTodo(id: string) {
     this.todosStore.set(state => {
-      state = state.filter(todo => todo.id !== id);
-      return state;
+      return state.filter(todo => todo.id !== id);
     });
   }
 }
