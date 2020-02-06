@@ -2,8 +2,9 @@
   "name": "cool-store",
   "description": "CoolStore is a state store built on top of ImmerJS and RxJS",
   "keywords": [
-    "rxjs",
     "cool-store",
+    "rxjs",
+    "immerjs",
     "state-management"
   ],
   "author": "Vien Dinh",
