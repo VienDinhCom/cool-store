@@ -40,12 +40,12 @@ describe('AsyncCoolStore', () => {
   });
 
   it('Set Entire Data 2', () => {
-    store.setData({ name: 'Nokia' });
+    store.setData(() => ({ name: 'iPhone' }));
 
     expect(store.get()).toEqual({
       loading: false,
       data: {
-        name: 'Nokia',
+        name: 'iPhone',
       },
       error: null,
     });
