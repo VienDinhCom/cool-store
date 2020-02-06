@@ -1,37 +1,42 @@
-import clone from 'lodash.clonedeep';
+import { produce } from 'immer';
 import { BehaviorSubject } from 'rxjs';
 
+type CB<State> = (state: State) => State | void;
+
 export class CoolStore<State> {
-  private initialState: State;
   private state: State;
+  private initialState: State;
   private state$: BehaviorSubject<State>;
 
   constructor(initialState: State) {
-    this.state = clone(initialState);
-    this.initialState = clone(initialState);
-    this.state$ = new BehaviorSubject(clone(initialState));
+    const state = <State>produce(initialState, () => initialState);
+
+    this.state = state;
+    this.initialState = state;
+    this.state$ = new BehaviorSubject(state);
   }
 
   private emit() {
-    this.state$.next(clone(this.state));
+    this.state$.next(this.state);
   }
 
   reset() {
-    this.state = clone(this.initialState);
+    this.state = this.initialState;
     this.emit();
   }
 
-  set(callback: (state: State) => State | void) {
-    const inputState = clone(this.state);
-    const returnState = <State>callback(inputState);
-
-    this.state = returnState ? clone(returnState) : clone(inputState);
+  set(recipe: State | CB<State>) {
+    if (typeof recipe === 'function') {
+      this.state = <State>produce(this.state, <CB<State>>recipe);
+    } else {
+      this.state = <State>produce(this.state, () => recipe);
+    }
 
     this.emit();
   }
 
   get() {
-    return clone(this.state);
+    return this.state;
   }
 
   getChanges() {
