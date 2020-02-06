@@ -29,7 +29,7 @@ export class AsyncCoolStore<Data, Error> extends CoolStore<
 
       if (typeof recipe === 'function') {
         const data = callFn(<CB<Data>>recipe);
-        if (data) state.data = data;
+        if (data !== undefined) state.data = data;
       } else {
         state.data = <Data>recipe;
       }
