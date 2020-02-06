@@ -20,8 +20,7 @@ describe('CoolStore', () => {
 
     store = new CoolStore<State>(initialState);
 
-    // Joker
-    // initialState.product.name = 'iPhone';
+    // initialState.product.name = 'Joker';
 
     expect(store.get()).toEqual({
       product: {
@@ -48,8 +47,7 @@ describe('CoolStore', () => {
         next: state => {
           const cloneState = produce(state, () => state);
 
-          // Joker
-          // state.product['name'] = 'Galaxy';
+          // state.product['name'] = 'Joker';
 
           expect(cloneState).toEqual(store.get());
 
@@ -84,8 +82,7 @@ describe('CoolStore', () => {
 
     store.set(() => ({ product }));
 
-    // Joker
-    // product.name = 'iPhone';
+    // product.name = 'Joker';
 
     expect(store.get()).toEqual({
       product: {
@@ -103,8 +100,7 @@ describe('CoolStore', () => {
       state.product = product;
     });
 
-    // Joker
-    // product.name = 'Galaxy';
+    // product.name = 'Joker';
 
     expect(store.get()).toEqual({
       product: {
