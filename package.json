@@ -2,12 +2,13 @@
   "name": "cool-store",
   "description": "CoolStore is a state store built on top of ImmerJS and RxJS",
   "keywords": [
-    "rxjs",
     "cool-store",
+    "rxjs",
+    "immerjs",
     "state-management"
   ],
   "author": "Vien Dinh",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
