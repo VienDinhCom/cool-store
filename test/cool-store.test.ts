@@ -31,12 +31,9 @@ describe('CoolStore', () => {
   });
 
   it('Get State', () => {
-    // const state = store.get();
+    const state = store.get();
 
-    // Joker
-    // state.product['name'] = 'Galaxy';
-
-    expect(store.get()).toEqual({
+    expect(state).toEqual({
       product: {
         name: '',
       },
@@ -56,7 +53,6 @@ describe('CoolStore', () => {
 
           expect(cloneState).toEqual(store.get());
 
-          // Set State
           store.set(state => {
             state.product.name = 'iPhone';
           });
@@ -67,7 +63,21 @@ describe('CoolStore', () => {
       });
   });
 
-  it('Set Entire State', () => {
+  it('Set Entire State 1', () => {
+    store.set({
+      product: {
+        name: 'Nokia',
+      },
+    });
+
+    expect(store.get()).toEqual({
+      product: {
+        name: 'Nokia',
+      },
+    });
+  });
+
+  it('Set Entire State 2', () => {
     const product = {
       name: 'Galaxy',
     };

@@ -6,6 +6,8 @@ export interface AsyncCoolState<Data, Error> {
   error: Error | null;
 }
 
+type CB<Data> = (data: Data | null) => Data | null | void;
+
 export class AsyncCoolStore<Data, Error> extends CoolStore<
   AsyncCoolState<Data, Error>
 > {
@@ -16,14 +18,21 @@ export class AsyncCoolStore<Data, Error> extends CoolStore<
     });
   }
 
-  setData(callback: (data: Data | null) => Data | null | void) {
+  setData(recipe: Data | CB<Data>) {
     this.set(state => {
-      const data = callback(state.data);
-
       state.loading = false;
       state.error = null;
 
-      if (data) state.data = data;
+      function callFn(cb: CB<Data>) {
+        return cb(state.data);
+      }
+
+      if (typeof recipe === 'function') {
+        const data = callFn(<CB<Data>>recipe);
+        if (data) state.data = data;
+      } else {
+        state.data = <Data>recipe;
+      }
     });
   }
 

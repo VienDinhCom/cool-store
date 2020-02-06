@@ -1,6 +1,8 @@
 import { produce } from 'immer';
 import { BehaviorSubject } from 'rxjs';
 
+type CB<State> = (state: State) => State | void;
+
 export class CoolStore<State> {
   private state: State;
   private initialState: State;
@@ -23,8 +25,13 @@ export class CoolStore<State> {
     this.emit();
   }
 
-  set(recipe: (state: State) => State | void) {
-    this.state = <State>produce(this.state, recipe);
+  set(recipe: State | CB<State>) {
+    if (typeof recipe === 'function') {
+      this.state = <State>produce(this.state, <CB<State>>recipe);
+    } else {
+      this.state = <State>produce(this.state, () => recipe);
+    }
+
     this.emit();
   }
 
