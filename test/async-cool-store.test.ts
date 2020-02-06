@@ -51,6 +51,18 @@ describe('AsyncCoolStore', () => {
     });
   });
 
+  it('Set Entire Data 3', () => {
+    store.setData({ name: 'Nokia' });
+
+    expect(store.get()).toEqual({
+      loading: false,
+      data: {
+        name: 'Nokia',
+      },
+      error: null,
+    });
+  });
+
   it('Set Chilren Data', () => {
     store.setData(data => {
       if (data) data.name = 'Galaxy';
