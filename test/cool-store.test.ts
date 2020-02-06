@@ -46,7 +46,7 @@ describe('CoolStore', () => {
       .subscribe({
         next: state => {
           const cloneState = produce(state, () => state);
-          
+
           // state.product['name'] = 'Joker';
 
           expect(cloneState).toEqual(store.get());
