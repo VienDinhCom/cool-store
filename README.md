@@ -1,6 +1,6 @@
 # CoolStore
 
-CoolStore is a state store built on top of [RxJS](https://www.npmjs.com/package/rxjs).
+CoolStore is a state store built on top of [ImmerJS](https://www.npmjs.com/package/immer) and [RxJS](https://www.npmjs.com/package/rxjs).
 
 ## Installation
 

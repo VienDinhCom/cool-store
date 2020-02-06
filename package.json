@@ -1,13 +1,13 @@
 {
   "name": "cool-store",
-  "description": "CoolStore is a state store built on top of RxJS",
+  "description": "CoolStore is a state store built on top of ImmerJS and RxJS",
   "keywords": [
     "rxjs",
     "cool-store",
     "state-management"
   ],
   "author": "Vien Dinh",
-  "version": "1.4.4",
+  "version": "2.0.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -24,7 +24,7 @@
     "lint": "tsdx lint"
   },
   "dependencies": {
-    "lodash.clonedeep": "^4.5.0"
+    "immer": "^5.3.4"
   },
   "peerDependencies": {
     "rxjs": "^6.5.4"

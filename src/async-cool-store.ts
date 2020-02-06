@@ -18,12 +18,12 @@ export class AsyncCoolStore<Data, Error> extends CoolStore<
 
   setData(callback: (data: Data | null) => Data | null | void) {
     this.set(state => {
-      const returnData = <Data | null>callback(state.data);
-
-      if (returnData) state.data = returnData;
+      const data = callback(state.data);
 
       state.loading = false;
       state.error = null;
+
+      if (data) state.data = data;
     });
   }
 

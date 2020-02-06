@@ -1,6 +1,6 @@
-import { CoolStore } from '../src';
+import { produce } from 'immer';
 import { take } from 'rxjs/operators';
-import clone from 'lodash.clonedeep';
+import { CoolStore } from '../src';
 
 describe('CoolStore', () => {
   interface State {
@@ -21,7 +21,7 @@ describe('CoolStore', () => {
     store = new CoolStore<State>(initialState);
 
     // Joker
-    initialState.product.name = 'iPhone';
+    // initialState.product.name = 'iPhone';
 
     expect(store.get()).toEqual({
       product: {
@@ -31,10 +31,10 @@ describe('CoolStore', () => {
   });
 
   it('Get State', () => {
-    const state = store.get();
+    // const state = store.get();
 
     // Joker
-    state.product['name'] = 'Galaxy';
+    // state.product['name'] = 'Galaxy';
 
     expect(store.get()).toEqual({
       product: {
@@ -49,10 +49,10 @@ describe('CoolStore', () => {
       .pipe(take(2))
       .subscribe({
         next: state => {
-          const cloneState = clone(state);
+          const cloneState = produce(state, () => state);
 
           // Joker
-          state.product['name'] = 'Galaxy';
+          // state.product['name'] = 'Galaxy';
 
           expect(cloneState).toEqual(store.get());
 
@@ -75,7 +75,7 @@ describe('CoolStore', () => {
     store.set(() => ({ product }));
 
     // Joker
-    product.name = 'iPhone';
+    // product.name = 'iPhone';
 
     expect(store.get()).toEqual({
       product: {
@@ -94,7 +94,7 @@ describe('CoolStore', () => {
     });
 
     // Joker
-    product.name = 'Galaxy';
+    // product.name = 'Galaxy';
 
     expect(store.get()).toEqual({
       product: {
