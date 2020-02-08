@@ -20,7 +20,8 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test",
-    "lint": "tsdx lint"
+    "lint": "tsdx lint",
+    "push": "release-it"
   },
   "dependencies": {
     "immer": "^5.3.4"
