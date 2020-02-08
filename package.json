@@ -14,9 +14,7 @@
   "typings": "dist/index.d.ts",
   "module": "dist/cool-store.esm.js",
   "files": [
-    "dist",
-    "src",
-    "test"
+    "dist"
   ],
   "scripts": {
     "start": "tsdx watch",
