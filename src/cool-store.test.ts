@@ -1,6 +1,6 @@
 import { produce } from 'immer';
 import { take } from 'rxjs/operators';
-import { CoolStore } from '../src';
+import { CoolStore } from './cool-store';
 
 describe('CoolStore', () => {
   interface State {

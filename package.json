@@ -1,6 +1,6 @@
 {
   "name": "cool-store",
-  "description": "CoolStore is a state store built on top of ImmerJS and RxJS",
+  "description": "CoolStore is a simple and powerful state store built on top of ImmerJS and RxJS",
   "keywords": [
     "cool-store",
     "rxjs",
@@ -17,10 +17,9 @@
     "dist"
   ],
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
-    "prepare": "tsdx build",
     "test": "tsdx test",
+    "build": "npx rimraf dist && tsc",
+    "prepare": "npm run build",
     "lint": "tsdx lint"
   },
   "dependencies": {

@@ -1,4 +1,4 @@
-import { AsyncCoolStore, AsyncCoolState } from '../src';
+import { AsyncCoolStore, AsyncCoolState } from './async-cool-store';
 
 describe('AsyncCoolStore', () => {
   interface Product {
