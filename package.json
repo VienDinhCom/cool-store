@@ -8,7 +8,7 @@
     "state-management"
   ],
   "author": "Vien Dinh",
-  "version": "2.2.13",
+  "version": "2.2.14",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
