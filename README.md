@@ -19,6 +19,8 @@ npm install --save cool-store
 
 ## How to use `CoolStore`?
 
+#### 1. Create Store
+
 ```
 import { CoolStore } from 'cool-store';
 
@@ -32,50 +34,68 @@ const initialUser: User = {
   email: null,
 };
 
-// Create Store
 const store = new CoolStore(initialUser);
+```
 
-// Set State
+#### 2. Set State
+
+```
 store.set(user => {
   user.name = 'Vien Dinh';
   user.email = 'vien@test.com';
 });
+```
 
-// Get State
+#### 3. Get State
+
+```
 const user = store.get();
 console.log({ user });
+```
 
-// Subscribe State
+#### 4. Subscribe State with `store.getChanges()` observable.
+
+```
 store.getChanges().subscribe(user => {
   console.log({ user });
 });
+```
 
-// Reset State
+#### 5. Reset State
+
+```
 store.reset();
 ```
 
-### Advanced `store.set()`
+### # Advanced `store.set()` method.
+
+#### # Set Entire State
 
 ```
-// Set Entire State
 store.set({
   name: 'Vien Dinh',
   email: 'vien@test.com',
 });
+```
 
-// Set Entire State
+```
 store.set(() => ({
   name: 'Vien Dinh',
   email: 'vien@test.com',
 }));
+```
 
-// Set State Properties
+#### # Set State Properties
+
+```
 store.set(user => {
   user.name = 'Vien Dinh';
 });
 ```
 
 ## How to use `AsyncCoolStore`?
+
+#### 1. Create Store
 
 ```
 import { AsyncCoolStore, AsyncCoolState } from 'cool-store';
@@ -91,10 +111,12 @@ const initialUser: AsyncCoolState<User, Error> = {
   error: null,
 };
 
-// Create Store
 const store = new AsyncCoolStore(initialUser);
+```
 
-// Set State
+#### 2. Set State
+
+```
 function getUser(id: number) {
   store.setLoading();
 
@@ -103,11 +125,13 @@ function getUser(id: number) {
     .then(store.setData)
     .catch(store.setError);
 }
+```
 
-// Execute Function
+#### 3. Subscribe State
+
+```
 getUser(1);
 
-// Subscribe State
 store.getChanges().subscribe(({ loading, data, error }) => {
   console.log({ loading, data, error });
 });
@@ -115,22 +139,27 @@ store.getChanges().subscribe(({ loading, data, error }) => {
 
 You can also use `store.get()`, `store.set()`, `store.reset()` methods with `AsyncCoolStore`.
 
-### Advanced `store.setData()`
+### # Advanced `store.setData()` method.
+
+#### # Set Entire Data
 
 ```
-// Set Entire Data
 store.setData({
   name: 'Vien Dinh',
   email: 'vien@test.com',
 });
+```
 
-// Set Entire Data
+```
 store.setData(() => ({
   name: 'Vien Dinh',
   email: 'vien@test.com',
 }));
+```
 
-// Set Data Properties
+#### # Set Data Properties
+
+```
 store.setData(user => {
   user.name = 'Vien Dinh';
 });
