@@ -17,9 +17,7 @@ npm install --save cool-store
 - [How to use CoolStore with React?](https://github.com/Maxvien/cool-store/tree/master/examples/cool-store-react)
 - [How to use CoolStore with Angular?](https://github.com/Maxvien/cool-store/tree/master/examples/cool-store-angular)
 
-## Usage
-
-### How to use `CoolStore`?
+## How to use `CoolStore`?
 
 ```
 import { CoolStore } from 'cool-store';
@@ -56,7 +54,28 @@ store.getChanges().subscribe(user => {
 store.reset();
 ```
 
-### How to use `AsyncCoolStore`?
+### Advanced `store.set()`
+
+```
+// Set Entire State
+store.set({
+  name: 'Vien Dinh',
+  email: 'vien@test.com',
+});
+
+// Set Entire State
+store.set(() => ({
+  name: 'Vien Dinh',
+  email: 'vien@test.com',
+}));
+
+// Set State Properties
+store.set(user => {
+  user.name = 'Vien Dinh';
+});
+```
+
+## How to use `AsyncCoolStore`?
 
 ```
 import { AsyncCoolStore, AsyncCoolState } from 'cool-store';
@@ -95,3 +114,24 @@ store.getChanges().subscribe(({ loading, data, error }) => {
 ```
 
 You can also use `store.get()`, `store.set()`, `store.reset()` methods with `AsyncCoolStore`.
+
+### Advanced `store.setData()`
+
+```
+// Set Entire Data
+store.setData({
+  name: 'Vien Dinh',
+  email: 'vien@test.com',
+});
+
+// Set Entire Data
+store.setData(() => ({
+  name: 'Vien Dinh',
+  email: 'vien@test.com',
+}));
+
+// Set Data Properties
+store.setData(user => {
+  user.name = 'Vien Dinh';
+});
+```
