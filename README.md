@@ -29,35 +29,35 @@ interface User {
   email: string;
 }
 
-const initialUser: User = {
+const initialState: User = {
   name: null,
   email: null,
 };
 
-const store = new CoolStore(initialUser);
+const store = new CoolStore(initialState);
 ```
 
 #### 2. Set State
 
 ```
-store.set(user => {
-  user.name = 'Vien Dinh';
-  user.email = 'vien@test.com';
+store.set(state => {
+  state.name = 'Vien Dinh';
+  state.email = 'vien@test.com';
 });
 ```
 
 #### 3. Get State
 
 ```
-const user = store.get();
-console.log({ user });
+const state = store.get();
+console.log({ user: state });
 ```
 
 #### 4. Subscribe State with `store.getChanges()` observable.
 
 ```
-store.getChanges().subscribe(user => {
-  console.log({ user });
+store.getChanges().subscribe(state => {
+  console.log({ user: state });
 });
 ```
 
@@ -88,8 +88,8 @@ store.set(() => ({
 #### # Set State Properties
 
 ```
-store.set(user => {
-  user.name = 'Vien Dinh';
+store.set(state => {
+  state.name = 'Vien Dinh';
 });
 ```
 
@@ -105,13 +105,13 @@ interface User {
   email: string;
 }
 
-const initialUser: AsyncCoolState<User, Error> = {
+const initialState: AsyncCoolState<User, Error> = {
   loading: false,
   data: null,
   error: null,
 };
 
-const store = new AsyncCoolStore(initialUser);
+const store = new AsyncCoolStore(initialState);
 ```
 
 #### 2. Set State
@@ -160,7 +160,7 @@ store.setData(() => ({
 #### # Set Data Properties
 
 ```
-store.setData(user => {
-  user.name = 'Vien Dinh';
+store.setData(state => {
+  state.name = 'Vien Dinh';
 });
 ```
