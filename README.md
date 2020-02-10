@@ -19,5 +19,79 @@ npm install --save cool-store
 
 ## Usage
 
-- [CoolStore](https://github.com/Maxvien/cool-store/blob/master/src/cool-store.test.ts)
-- [AsyncCoolStore](https://github.com/Maxvien/cool-store/blob/master/src/async-cool-store.test.ts)
+### How to use `CoolStore`?
+
+```
+import { CoolStore } from 'cool-store';
+
+interface User {
+  name: string;
+  email: string;
+}
+
+const initialUser: User = {
+  name: null,
+  email: null,
+};
+
+// Create Store
+const store = new CoolStore(initialUser);
+
+// Set State
+store.set(user => {
+  user.name = 'Vien Dinh';
+  user.email = 'vien@test.com';
+});
+
+// Get State
+const user = store.get();
+console.log({ user });
+
+// Subscribe State
+store.getChanges().subscribe(user => {
+  console.log({ user });
+});
+
+// Reset State
+store.reset();
+```
+
+### How to use `AsyncCoolStore`?
+
+```
+import { AsyncCoolStore, AsyncCoolState } from 'cool-store';
+
+interface User {
+  name: string;
+  email: string;
+}
+
+const initialUser: AsyncCoolState<User, Error> = {
+  loading: false,
+  data: null,
+  error: null,
+};
+
+// Create Store
+const store = new AsyncCoolStore(initialUser);
+
+// Set State
+function getUser(id: number) {
+  store.setLoading();
+
+  fetch('https://jsonplaceholder.typicode.com/users/' + id)
+    .then(res => res.json())
+    .then(store.setData)
+    .catch(store.setError);
+}
+
+// Execute Function
+getUser(1);
+
+// Subscribe State
+store.getChanges().subscribe(({ loading, data, error }) => {
+  console.log({ loading, data, error });
+});
+```
+
+You can also use `store.get()`, `store.set()`, `store.reset()` methods with `AsyncCoolStore`.
