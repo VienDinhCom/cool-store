@@ -9,7 +9,7 @@ export function TodoList() {
   return (
     <ul className="list-group">
       {todos.map(todo => (
-        <TodoItem todo={todo}></TodoItem>
+        <TodoItem key={todo.id} todo={todo}></TodoItem>
       ))}
     </ul>
   );

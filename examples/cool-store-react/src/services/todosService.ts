@@ -17,7 +17,7 @@ export function addTodo(todo: Todo) {
 
 export function removeTodo(id: string) {
   todosStore.set(state => {
-    return state.filter(todo => todo.id !== id);
+    state.splice(state.findIndex((todo) => todo.id === id), 1);
   });
 }
 

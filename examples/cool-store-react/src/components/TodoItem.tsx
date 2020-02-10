@@ -10,7 +10,6 @@ interface Props {
 export function TodoItem({ todo }: Props) {
   return (
     <li
-      key={todo.id}
       onClick={() => {
         if (todo.id) removeTodo(todo.id);
       }}
