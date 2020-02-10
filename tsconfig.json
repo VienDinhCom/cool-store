@@ -23,5 +23,5 @@
     "esModuleInterop": true
   },
   "include": ["src"],
-  "exclude": ["examples", "node_modules"]
+  "exclude": ["examples", "node_modules", "src/**/*.test.ts"]
 }
