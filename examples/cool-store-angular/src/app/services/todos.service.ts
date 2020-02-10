@@ -16,10 +16,6 @@ export class TodosService {
   }
 
   get todos() {
-    return this.todosStore.get();
-  }
-
-  get todosChanges() {
     return this.todosStore.getChanges();
   }
 
@@ -32,7 +28,10 @@ export class TodosService {
 
   removeTodo(id: string) {
     this.todosStore.set(state => {
-      state.splice(state.findIndex((todo) => todo.id === id), 1);
+      state.splice(
+        state.findIndex(todo => todo.id === id),
+        1
+      );
     });
   }
 }
