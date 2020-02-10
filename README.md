@@ -125,13 +125,13 @@ function getUser(id: number) {
     .then(store.setData)
     .catch(store.setError);
 }
+
+getUser(1); // execute the function
 ```
 
-#### 3. Subscribe State
+#### 3. Subscribe State with `store.getChanges()` observable.
 
 ```
-getUser(1);
-
 store.getChanges().subscribe(({ loading, data, error }) => {
   console.log({ loading, data, error });
 });
