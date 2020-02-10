@@ -1,6 +1,6 @@
 # How To Use CoolStore with Angular?
 
-This simple project will show you how to manage global state without `@ngrx/store`.
+This simple project will show you how to manage global state without `@ngrx/store` in Angular.
 
 ## Development server
 
@@ -13,4 +13,3 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-

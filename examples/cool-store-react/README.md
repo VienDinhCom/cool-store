@@ -1,6 +1,6 @@
 # How To Use CoolStore with React?
 
-This simple project will show you how to manage global state without `Redux`.
+This simple project will show you how to manage global state without `Redux` in React.
 
 ## Available Scripts
 
