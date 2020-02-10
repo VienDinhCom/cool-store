@@ -9,15 +9,19 @@ const initialState: Todo[] = [];
 const todosStore = new CoolStore<Todo[]>(initialState);
 
 export function addTodo(todo: Todo) {
+  todo.id = generate();
+
   todosStore.set(state => {
-    todo.id = generate();
     state.push(todo);
   });
 }
 
 export function removeTodo(id: string) {
   todosStore.set(state => {
-    state.splice(state.findIndex((todo) => todo.id === id), 1);
+    state.splice(
+      state.findIndex(todo => todo.id === id),
+      1
+    );
   });
 }
 
