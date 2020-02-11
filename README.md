@@ -10,8 +10,8 @@ npm install --save cool-store rxjs
 
 ## Usage
 
-- [CoolStore](#how-to-use-coolstore)
-- [AsyncCoolStore](#how-to-use-asynccoolstore)
+- [CoolStore](https://github.com/Maxvien/cool-store#how-to-use-coolstore)
+- [AsyncCoolStore](https://github.com/Maxvien/cool-store#how-to-use-asynccoolstore)
 
 ## Examples
 
