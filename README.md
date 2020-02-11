@@ -5,11 +5,7 @@ CoolStore is a simple and powerful state store built on top of [ImmerJS](https:/
 ## Installation
 
 ```
-npm install --save rxjs
-```
-
-```
-npm install --save cool-store
+npm install --save cool-store rxjs
 ```
 
 ## Usage
