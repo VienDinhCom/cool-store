@@ -8,7 +8,7 @@
     "immerjs",
     "state-management"
   ],
-  "version": "3.0.0",
+  "version": "3.0.1",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -27,7 +27,7 @@
     "prepare": "tsdx build"
   },
   "peerDependencies": {
-    "rxjs": "^6.6.2"
+    "rxjs": "6.x"
   },
   "husky": {
     "hooks": {
@@ -43,7 +43,7 @@
   "module": "dist/cool-store.esm.js",
   "devDependencies": {
     "husky": "^4.2.5",
-    "rxjs": "^6.6.2",
+    "rxjs": "6.x",
     "tsdx": "^0.13.3",
     "tslib": "^2.0.1",
     "typescript": "^4.0.2"
