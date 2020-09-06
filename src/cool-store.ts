@@ -1,15 +1,15 @@
 import { produce } from 'immer';
 import { BehaviorSubject } from 'rxjs';
 
-type CB<State> = (state: State) => State | void;
+type CB<S> = (state: S) => S | void;
 
-export class CoolStore<State> {
-  private state: State;
-  private initialState: State;
-  private state$: BehaviorSubject<State>;
+export class CoolStore<S> {
+  private state: S;
+  private initialState: S;
+  private state$: BehaviorSubject<S>;
 
-  constructor(initialState: State) {
-    const state = <State>produce(initialState, () => initialState);
+  constructor(initialState: S) {
+    const state = <S>produce(initialState, () => initialState);
 
     this.state = state;
     this.initialState = state;
@@ -25,11 +25,11 @@ export class CoolStore<State> {
     this.emit();
   }
 
-  set(recipe: State | CB<State>) {
+  set(recipe: S | CB<S>) {
     if (typeof recipe === 'function') {
-      this.state = <State>produce(this.state, <CB<State>>recipe);
+      this.state = <S>produce(this.state, <CB<S>>recipe);
     } else {
-      this.state = <State>produce(this.state, () => recipe);
+      this.state = <S>produce(this.state, () => recipe);
     }
 
     this.emit();

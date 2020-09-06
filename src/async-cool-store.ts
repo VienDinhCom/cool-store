@@ -1,15 +1,15 @@
 import { CoolStore } from './cool-store';
 
-export interface AsyncCoolState<Data, Error> {
+export interface AsyncCoolState<D, E = Error> {
   loading: boolean;
-  data: Data | null;
-  error: Error | null;
+  data: D | null;
+  error: E | null;
 }
 
-type CB<Data> = (data: Data | null) => Data | null | void;
+type CB<D> = (data: D | null) => D | null | void;
 
-export class AsyncCoolStore<Data, Error> extends CoolStore<
-  AsyncCoolState<Data, Error>
+export class AsyncCoolStore<S extends AsyncCoolState<any>> extends CoolStore<
+  S
 > {
   setLoading() {
     this.set(state => {
@@ -18,25 +18,25 @@ export class AsyncCoolStore<Data, Error> extends CoolStore<
     });
   }
 
-  setData(recipe: Data | CB<Data>) {
+  setData(recipe: S['data'] | CB<S['data']>) {
     this.set(state => {
       state.loading = false;
       state.error = null;
 
-      function callFn(cb: CB<Data>) {
+      function callFn(cb: CB<S['data']>) {
         return cb(state.data);
       }
 
       if (typeof recipe === 'function') {
-        const data = callFn(<CB<Data>>recipe);
+        const data = callFn(<CB<S['data']>>recipe);
         if (data !== undefined) state.data = data;
       } else {
-        state.data = <Data>recipe;
+        state.data = <S['data']>recipe;
       }
     });
   }
 
-  setError(error: Error) {
+  setError(error: S['error']) {
     this.set(state => {
       state.loading = false;
       state.error = error;

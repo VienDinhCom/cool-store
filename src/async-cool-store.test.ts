@@ -1,14 +1,14 @@
 import { AsyncCoolStore, AsyncCoolState } from './async-cool-store';
 
 describe('AsyncCoolStore', () => {
-  interface Product {
+  interface Data {
     name: string;
   }
 
-  let store: AsyncCoolStore<Product, Error>;
+  let store: AsyncCoolStore<AsyncCoolState<Data>>;
 
   it('Create Store', () => {
-    const initialState: AsyncCoolState<Product, Error> = {
+    const initialState: AsyncCoolState<Data> = {
       loading: false,
       data: null,
       error: null,
