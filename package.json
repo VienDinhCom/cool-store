@@ -8,7 +8,7 @@
     "immerjs",
     "state-management"
   ],
-  "version": "3.0.1",
+  "version": "3.0.2",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -50,5 +50,13 @@
   },
   "dependencies": {
     "immer": "^7.0.8"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxvien/cool-store"
+  },
+  "bugs": {
+    "url": "https://github.com/maxvien/cool-store/issues"
+  },
+  "homepage": "https://github.com/maxvien/cool-store#readme"
 }
