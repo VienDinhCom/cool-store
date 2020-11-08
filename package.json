@@ -8,7 +8,7 @@
     "immerjs",
     "state-management"
   ],
-  "version": "3.0.2",
+  "version": "3.0.3",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
